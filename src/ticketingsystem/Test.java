@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-//test方法参考了网上提供的思路和讲解
+//该方法参考了现成的思路
 public class Test {
 	// 设置测试数值
 	private final static int ROUTE_NUM = 5;// 列车车次
