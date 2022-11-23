@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="VeriLin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/VeriLin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

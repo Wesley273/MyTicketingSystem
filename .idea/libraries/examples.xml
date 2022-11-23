@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="examples">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/examples/大作业参考1.zip!/" />
+      <root url="jar://$PROJECT_DIR$/examples/大作业参考2.zip!/" />
+      <root url="jar://$PROJECT_DIR$/examples/大作业参考3.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
