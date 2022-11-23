@@ -13,20 +13,23 @@ public class TicketingDS implements TicketingSystem {
     private final int stationNum;
     // 车次列表
     private final ArrayList<RouteSection> routeArray;
+    // 线程数
+    private final int threadNum;
 
     // 使用构造方法，当java类实例化时，输入参数值，将属性初始化
     public TicketingDS(int routeNum, int coachNum, int seatNum, int stationNum,
-            int threadNum) {
+                       int threadNum) {
 
         this.routeNum = routeNum;
         this.stationNum = stationNum;
+        this.threadNum = threadNum;
 
         // ArrayList是Java集合框架中的一个重要的类，它继承于AbstractList，实现了List接口，
         // 它是一个长度可变的集合，提供了增删改查的功能。集合中允许null的存在。
         // ArrayList类还是实现了RandomAccess接口，可以对元素进行快速访问。
         // 实现了Serializable接口，说明ArrayList可以被序列化，还有Cloneable接口，可以被复制。
         // 和Vector不同的是，ArrayList不是线程安全的。
-        this.routeArray = new ArrayList<RouteSection>(routeNum);
+        this.routeArray = new ArrayList<>(routeNum);
 
         // 依次遍历每个车次
         for (int routeID = 1; routeID <= routeNum; routeID++) {

@@ -25,13 +25,13 @@ class RouteSection {
 
         this.routeID = routeId;
         this.coachNum = coachNum;
-        this.coachList = new ArrayList<CoachSection>(coachNum);
+        this.coachList = new ArrayList<>(coachNum);
         this.ticketID = new AtomicLong(0);
 
         // ConcurrentLinkedQueue是一个基于链接节点的无界线程安全队列，
         // 它采用先进先出的规则对节点进行排序，当我们添加一个元素的时候，它会添加到队列的尾部，当我们获取一个元素时，它会返回队列头部的元素。
         // 它采用了“wait－free”算法来实现
-        this.ticketSold = new ConcurrentLinkedQueue<Long>();
+        this.ticketSold = new ConcurrentLinkedQueue<>();
 
         // 遍历车厢
         int coachID = 1;
@@ -74,7 +74,7 @@ class RouteSection {
                 long tic_hashCode = 0;
 
                 tic_hashCode = getTicketHashCode(ticket, tic_hashCode);
-                this.ticketSold.add(new Long(tic_hashCode));
+                this.ticketSold.add(tic_hashCode);
                 return ticket;
 
             }
