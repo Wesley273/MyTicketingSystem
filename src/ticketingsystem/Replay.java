@@ -1,4 +1,4 @@
-package src;
+package ticketingsystem;
 
 import java.util.*;
 import java.io.File;
