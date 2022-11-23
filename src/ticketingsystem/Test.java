@@ -6,16 +6,25 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 //该方法参考了现成的思路
 public class Test {
-	private final static int routeNum = 5;// 列车车次
-	private final static int coachNum = 8;// 车箱数
-	private final static int seatNum = 100;// 每个车厢的座位数
-	private final static int stationNum = 10;// 总站数
+	// 列车车次
+	private final static int routeNum = 5;
+	// 车箱数
+	private final static int coachNum = 8;
+	// 每个车厢的座位数
+	private final static int seatNum = 100;
+	// 总站数
+	private final static int stationNum = 10;
 
-	private final static int testNum = 10000;// 每个线程里调用的方法数是10000次
-	private final static int refundNum = 10;// 退票数目
-	private final static int buyNum = 40;// 买票数目
-	private final static int inquiryNum = 100;// 查询票数目
-	private final static int threadnum = 64;// 线程数目
+	// 每个线程里调用的方法数是10000次
+	private final static int testNum = 10000;
+	// 退票数目
+	private final static int refundNum = 10;
+	// 买票数目
+	private final static int buyNum = 40;
+	// 查询票数目
+	private final static int inquiryNum = 100;
+	// 线程数目
+	private final static int threadnum = 64;
 
 	private final static long[] buyTime = new long[threadnum];
 	private final static long[] refundTime = new long[threadnum];

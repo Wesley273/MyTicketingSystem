@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 class CoachSection {
-
-    private final int coachID;// 车厢序号
-    private final int seatNum;// 座位数目
-    private final ArrayList<SeatSection> seatList;// 座位列表
+    // 车厢序号
+    private final int coachID;
+    // 座位数目
+    private final int seatNum;
+    // 座位列表
+    private final ArrayList<SeatSection> seatList;
 
     public CoachSection(final int coachID, final int seatNum) {
 
@@ -59,7 +61,7 @@ class CoachSection {
 
     // 尝试退票
     public boolean initRefund(final int seatID, final int departure,
-                              final int arrival) {
+            final int arrival) {
         return this.seatList.get(seatID - 1).initRefund(departure, arrival);
     }
 
