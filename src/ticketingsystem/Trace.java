@@ -2,26 +2,6 @@ package ticketingsystem;
 
 import java.util.*;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-class ThreadId {
-	// Atomic integer containing the next thread ID to be assigned
-	private static final AtomicInteger nextId = new AtomicInteger(0);
-
-	// Thread local variable containing each thread's ID
-	private static final ThreadLocal<Integer> threadId = new ThreadLocal<Integer>() {
-		@Override
-		protected Integer initialValue() {
-			return nextId.getAndIncrement();
-		}
-	};
-
-	// Returns the current thread's unique ID, assigning it if necessary
-	public static int get() {
-		return threadId.get();
-	}
-}
-
 public class Trace {
 	final static int threadnum = 4;
 	final static int routenum = 3; // route is designed from 1 to 3
