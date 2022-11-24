@@ -26,7 +26,7 @@ class Route {
         for (int coach = 1; coach <= coachNum; coach++) {
             this.coachList.add(new Coach(coach, seatNum));
         }
-        //用以记录已售出票
+
         this.soldTicket = new ConcurrentHashMap<>(coachNum * seatNum, 0.75f, threadNum);
     }
 
@@ -75,7 +75,7 @@ class Route {
 
     public boolean refundRoute(final Ticket ticket) {
 
-        // 判断已售出票里是否包含这张票
+        // 判断售出队列里是否包含这张票
         if (this.soldTicket.contains(ticket)) {
             // 删除这张票
             this.soldTicket.remove(ticket);
