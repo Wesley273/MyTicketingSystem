@@ -1,7 +1,8 @@
 package ticketingsystem;
 
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -14,9 +15,10 @@ class Route {
     private final ArrayList<Coach> coachList;
     // 车票的票号，每个车票有唯一的票号
     private final AtomicLong ticket;
-    private final ConcurrentHashMap<Long, Ticket> soldTicket;
+    // 构造已售车票队列
+    private final Queue<Long> soldTicket;
 
-    public Route(final int ID, final int coachNum, final int seatNum, int threadNum) {
+    public Route(final int ID, final int coachNum, final int SEAT_NUM) {
         this.ID = ID;
         this.coachNum = coachNum;
         this.ticket = new AtomicLong(0);
@@ -24,10 +26,11 @@ class Route {
         // 构造车厢动态数组
         this.coachList = new ArrayList<>(coachNum);
         for (int coach = 1; coach <= coachNum; coach++) {
-            this.coachList.add(new Coach(coach, seatNum));
+            this.coachList.add(new Coach(coach, SEAT_NUM));
         }
 
-        this.soldTicket = new ConcurrentHashMap<>(coachNum * seatNum, 0.75f, threadNum);
+        // ConcurrentLinkedQueue是一个基于链接节点的无界线程安全队列，是“wait－free”的
+        this.soldTicket = new ConcurrentLinkedQueue<>();
     }
 
     private static long hashTicket(Ticket ticket) {
@@ -58,7 +61,7 @@ class Route {
                 ticket.departure = departure;
                 ticket.arrival = arrival;
                 long hashedTicket = hashTicket(ticket);
-                this.soldTicket.put(hashedTicket, ticket);
+                this.soldTicket.add(hashedTicket);
                 return ticket;
             }
         }
@@ -75,10 +78,13 @@ class Route {
 
     public boolean refundRoute(final Ticket ticket) {
 
+        // 求票对应的哈希值
+        long hashedTicket = hashTicket(ticket);
+
         // 判断售出队列里是否包含这张票
-        if (this.soldTicket.contains(ticket)) {
+        if (this.soldTicket.contains(hashedTicket)) {
             // 删除这张票
-            this.soldTicket.remove(ticket);
+            this.soldTicket.remove(hashedTicket);
             // 重新返回
             return this.coachList.get(ticket.coach - 1).refundCoach(ticket.seat, ticket.departure, ticket.arrival);
         } else {

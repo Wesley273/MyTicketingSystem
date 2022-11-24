@@ -19,7 +19,7 @@ public class TicketingDS implements TicketingSystem {
         // 构建车次动态数组，ArrayList不是线程安全的
         this.routeList = new ArrayList<>(this.routeNum);
         for (int route = 1; route <= this.routeNum; route++) {
-            this.routeList.add(new Route(route, coachNum, seatNum,threadNum));
+            this.routeList.add(new Route(route, coachNum, seatNum));
         }
     }
 
