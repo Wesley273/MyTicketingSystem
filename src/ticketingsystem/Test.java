@@ -90,7 +90,7 @@ public class Test {
                 int id = threadID.getAndIncrement();
 
                 ArrayList<Ticket> soldTicket = new ArrayList<>();
-                for (int i1 = 0; i1 < testNum; i1++) {
+                for (int j = 0; j < testNum; j++) {
                     int sel = rand.nextInt(inquiryNum);
                     if (0 <= sel && sel < refundNum
                             && soldTicket.size() > 0) {
