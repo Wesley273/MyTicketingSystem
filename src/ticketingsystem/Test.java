@@ -146,7 +146,7 @@ public class Test {
         long start = System.currentTimeMillis();
         for (int i = 0; i < threadNum; ++i)
             threads[i].start();
-
+        //join()使主线程等待所有线程结束
         for (int i = 0; i < threadNum; i++) {
             threads[i].join();
         }
