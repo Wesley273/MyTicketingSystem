@@ -1,6 +1,5 @@
 package ticketingsystem;
 
-
 import java.util.*;
 
 public class TicketingDS implements TicketingSystem {
@@ -14,7 +13,6 @@ public class TicketingDS implements TicketingSystem {
     public TicketingDS(int routeNum, int coachNum, int seatNum, int stationNum, int threadNum) {
         this.routeNum = routeNum;
         this.stationNum = stationNum;
-        // 线程数
 
         // 构建车次动态数组，ArrayList不是线程安全的
         this.routeList = new ArrayList<>(this.routeNum);
