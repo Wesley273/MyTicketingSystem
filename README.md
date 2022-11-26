@@ -1,3 +1,7 @@
+#并发数据结构与多核编程大作业
+
+##要求如下：
+
 1. Put your TicketingDS.java and other related files in the ticketingsystem directory.
 
 2. The TrainConfig file contains the configuration of a Train Ticketing System.
