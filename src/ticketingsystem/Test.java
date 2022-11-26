@@ -52,8 +52,9 @@ public class Test {
 
     private static void clearRecord() {
         threadID.set(0);
-        long[][] arrays = {buyTime, refundTime, inquiryTime, buyTotal, refundTotal, inquiryTotal};
-        for (long[] array : arrays) Arrays.fill(array, 0);
+        long[][] arrays = { buyTime, refundTime, inquiryTime, buyTotal, refundTotal, inquiryTotal };
+        for (long[] array : arrays)
+            Arrays.fill(array, 0);
     }
 
     private static void showResult(double time, int threadNum) {
@@ -69,7 +70,6 @@ public class Test {
         long refundAvgTime = (long) (refundTotalTime / rTotal);
         long inquiryAvgTime = (long) (inquiryTotalTime / iTotal);
 
-
         long throughOutput = (long) ((long) threadNum * testNum / time) * 1000;
         System.out
                 .printf("ThreadNum: %d BuyAvgTime(ns): %d RefundAvgTime(ns): %d InquiryAvgTime(ns): %d ThroughOut(t/s): %d%n",
@@ -77,7 +77,6 @@ public class Test {
                         inquiryAvgTime, throughOutput);
         clearRecord();
     }
-
 
     private static void createThreads(TicketingDS tds, Thread[] threads, int threadNum) {
         for (int i = 0; i < threadNum; i++) {
@@ -146,7 +145,7 @@ public class Test {
         long start = System.currentTimeMillis();
         for (int i = 0; i < threadNum; ++i)
             threads[i].start();
-        //join()使主线程等待所有线程结束
+        // join()使主线程等待所有线程结束
         for (int i = 0; i < threadNum; i++) {
             threads[i].join();
         }
@@ -157,7 +156,7 @@ public class Test {
     public static void main(String[] args) throws InterruptedException {
 
         // 设置不同的线程总数
-        final int[] threadNum = {4, 8, 16, 32, 64};
+        final int[] threadNum = { 4, 8, 16, 32, 64 };
         int p;
 
         // 对不同threadNums数目的线程进行处理

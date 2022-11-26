@@ -37,7 +37,8 @@ public class Seat {
             long result = temp & oldValue;
             if (result == 0) {
                 newValue = temp | oldValue;
-            } else return -1;
+            } else
+                return -1;
         } while (!this.availableSeat.compareAndSet(oldValue, newValue));
         return this.ID;
     }

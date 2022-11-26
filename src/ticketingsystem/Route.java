@@ -34,7 +34,7 @@ class Route {
     }
 
     private static long hashTicket(Ticket ticket) {
-        //这里其实就是把各个数拼在一起，生成定长的hashcode
+        // 这里其实就是把各个数拼在一起，生成定长的hashcode
         long hashedTicket = ticket.tid << 32;
         hashedTicket |= (long) ticket.coach << 24;
         hashedTicket |= (long) ticket.seat << 12;
