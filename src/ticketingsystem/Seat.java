@@ -6,11 +6,9 @@ public class Seat {
     // 座位序号
     private final int ID;
     // 根据一个 AtomicLong 型 64 位的 availableSeat判断是否空闲
+    // availableSeat 的每一位表示座位对应的每一站， 0 表示未售出， 1 表示售出。
     private final AtomicLong availableSeat;
 
-    // availableSeat 的每一位表示座位对应的每一站， 0 表示未售出， 1 表示售出。
-    // 购票查询退票时均采用从 route-\>coach-\>seat 的方式调用方法，在 seatNode 操作时，
-    // 用原语 compareAndSet 构造非阻塞式的自旋锁来保证并发操作的原子性。
 
     public Seat(final int ID) {
         this.ID = ID;
@@ -36,9 +34,10 @@ public class Seat {
             oldValue = this.availableSeat.get();
             long result = temp & oldValue;
             if (result == 0) {
+                // 有空闲，把所要的区间置1
                 newValue = temp | oldValue;
-            } else
-                return -1;
+            } else return -1;
+
         } while (!this.availableSeat.compareAndSet(oldValue, newValue));
         return this.ID;
     }

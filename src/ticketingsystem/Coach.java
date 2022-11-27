@@ -24,13 +24,10 @@ class Coach {
     }
 
     public Ticket buyCoach(final int departure, final int arrival) {
-
         Ticket ticket = new Ticket();
-        // nextInt生成[0,n)范围内的随机整数
         int random = ThreadLocalRandom.current().nextInt(this.seatNum);
         for (int i = 0; i < this.seatNum; i++) {
             int seat = this.seatList.get(random).buySeat(departure, arrival);
-
             if (seat == -1) {
                 random = (random + 1) % this.seatNum;
             } else {
@@ -52,7 +49,7 @@ class Coach {
     }
 
     public boolean refundCoach(final int seatID, final int departure,
-            final int arrival) {
+                               final int arrival) {
         return this.seatList.get(seatID - 1).refundSeat(departure, arrival);
     }
 
