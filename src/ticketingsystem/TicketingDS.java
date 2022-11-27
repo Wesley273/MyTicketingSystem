@@ -51,7 +51,6 @@ public class TicketingDS implements TicketingSystem {
     public int inquiry(int route, int departure, int arrival) {
         if (route <= 0 || route > this.routeNum || arrival > this.stationNum || departure >= arrival)
             return -1;
-        // 尝试查询
         return this.routeList.get(route - 1).queryRoute(departure, arrival);
 
     }
