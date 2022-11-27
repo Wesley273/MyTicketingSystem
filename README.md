@@ -1,6 +1,6 @@
-#并发数据结构与多核编程大作业
+# 并发数据结构与多核编程大作业
 
-##要求如下：
+## 关于程序文件的描述：
 
 1. Put your TicketingDS.java and other related files in the ticketingsystem directory.
 
